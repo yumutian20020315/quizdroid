@@ -1,38 +1,66 @@
 package edu.uw.ischool.mutiay.quizdroid
 
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var quizs: ListView
+    private lateinit var pref:Button
+    private lateinit var barText:TextView
 
 
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
-        // get the repo in and access titles
-        val repo = (application as QuizApp).accessRepo()
-        val titles = repo.getTopicsnames()
-
-        val titlesWithDes = repo.getTitleswithDes()
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
+        // get the repo in and access titles
+        val repo = (application as QuizApp).accessRepo()
+        val titles = repo.getTopicsnames()
+
+        //get action bar
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+
+
+
+
+        val titlesWithDes = repo.getTitleswithDes()
+
+
+
+
 
         quizs= findViewById(R.id.quizListview)
+        pref = findViewById(R.id.my_preference)
+
+        pref.setOnClickListener {
+            val intent = Intent(this, Setting::class.java)
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+
+            }
+        }
 
         // old list view
 //        val adapter = ArrayAdapter<String>(this,
@@ -57,6 +85,27 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        barText = findViewById(R.id.showme)
+
+        val prefs = this.getPreferences(Context.MODE_PRIVATE)
+
+
+        val message1 = prefs.getString("url_download", "Howdy!")
+        val message2 = prefs.getString("minutes_between_download", "Howdy!")
+
+        if (message1 != null) {
+            Log.i("test1", message1)
+        }
+        if (message2 != null) {
+            Log.i("test1", message2)
+        }
+        barText.setText(message1 + " " + message2)
+    }
+
+
 }
 
 
