@@ -1,0 +1,85 @@
+[
+    {
+        "title": "Math",
+        "desc": "Questions about addition",
+        "questions":[
+            {
+                "text": "2 plus 3 equals what?",
+		"answer":"0",
+                "answers": ["5", "6", "7", "8"]
+
+            },
+            {
+                "text": "5 plus 6 equals what?",
+		"answer":"0",
+                "answers": ["11", "12", "13", "14"]
+
+            },
+            {
+                "text": "7 plus 8 equals what?",
+		"answer":"1",
+                "answers": ["14", "15", "16", "17"]
+
+            }
+        ]
+
+    },
+    {
+        "title": "Physics",
+        "desc": "Question about speed and simple machine",
+        "questions": [
+            {
+                "text": "A 10 kg object is pushed with a force of 20 N. What is its acceleration?",
+		"answer":"0",
+                "answers": ["2 meters per second squared", "5 meters per second squared", "10 meters per second squared", "20 meters per second squared"]
+
+            },
+            {
+                "text": "A car travels 150 km in 3 hours. What is its average speed?",
+		"answer":"0",
+                "answers": ["50 kilometers per hour", "60 kilometers per hour", "70 kilometers per hour", "80 kilometers per hour"]
+            },
+            {
+                "text": "What type of simple machine is a seesaw?",
+		"answer":"0",
+                "answers": ["Lever", "Pulley", "Wheel and Axle", "Inclined Plane"]
+
+            }
+        ]
+    },
+    {
+        "title": "Marvel Super Heroes",
+        "desc": "Question about Marvel Super Heroes the famous ones",
+        "questions": [
+            {
+                "text": "What is the source of the Hulk's strength?",
+		"answer":"0",
+                "answers": ["Gamma Radiation", "Super-Soldier Serum", "Alien Technology", "Mystical Enchantment"]
+            },
+            {
+                "text": "Which group of heroes does Iron Man belong to?",
+		"answer":"2",
+                "answers": ["Justice League", "X-Men", "Avengers", "Teen Titans"]
+
+            }
+        ]
+    },
+    {
+        "title": "Ice Cream",
+        "desc": "Questions about ice cream flavors",
+        "questions": [
+            {
+                "text": "Which ice cream is white color",
+		"answer":"2",
+                "answers": ["Chocolate", "Strawberry", "Vanilla", "Mint Chocolate Chip"]
+
+            },
+            {
+                "text": "Which ice cream is green color",
+		"answer":"1",
+                "answers": ["Vanilla", "Mint", "Orange", "Chocolate"]
+
+            }
+        ]
+    }
+]

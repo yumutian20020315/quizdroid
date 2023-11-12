@@ -14,7 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
-        android:hint="Enter your url"/>
+        android:hint="Enter your url"
+        android:textColor="@color/white"/>
 
 
 
@@ -26,7 +27,8 @@
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@id/urlInput"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/confirm_button"
@@ -38,13 +40,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:enabled="true"/>
 
-    <Button
-        android:id="@+id/back_to_main_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        app:layout_constraintTop_toBottomOf="@id/confirm_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:enabled="true"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

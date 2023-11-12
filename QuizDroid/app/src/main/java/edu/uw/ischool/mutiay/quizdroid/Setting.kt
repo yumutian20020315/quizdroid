@@ -13,7 +13,7 @@ class Setting : AppCompatActivity() {
     private lateinit var url:EditText
     private lateinit var minute_download:EditText
     private lateinit var confirm:Button
-    private lateinit var back_main:Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +22,13 @@ class Setting : AppCompatActivity() {
         url = findViewById(R.id.urlInput)
         minute_download = findViewById(R.id.minutesInput)
         confirm = findViewById(R.id.confirm_button)
-        back_main = findViewById(R.id.back_to_main_btn)
+
 
         confirm.setOnClickListener {
             var url_for_download = url.text.toString()
             var minutes = minute_download.text.toString()
 
-            val prefs = this.getPreferences(Context.MODE_PRIVATE)
+            val prefs = this.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
             val prefsEditor = prefs.edit()
 
             prefsEditor.putString("url_download", url_for_download)
@@ -36,18 +36,17 @@ class Setting : AppCompatActivity() {
             Log.i("test", minutes)
             prefsEditor.putString("minutes_between_download", minutes)
             prefsEditor.apply()
-            prefsEditor.commit()
         }
 
-        back_main.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-
-            try {
-                startActivity(intent)
-            } catch (e: ActivityNotFoundException) {
-
-            }
-        }
+//        back_main.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//
+//            try {
+//                startActivity(intent)
+//            } catch (e: ActivityNotFoundException) {
+//
+//            }
+//        }
 
 
 

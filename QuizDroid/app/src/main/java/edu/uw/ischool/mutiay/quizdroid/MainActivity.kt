@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
         val titlesWithDes = repo.getTitleswithDes()
 
 
@@ -88,22 +87,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.i("OnResume()", "onResume called")
         barText = findViewById(R.id.showme)
 
-        val prefs = this.getPreferences(Context.MODE_PRIVATE)
+        val prefs = this.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
 
+        val message1 = prefs.getString("url_download", "Default URL")
+        val message2 = prefs.getString("minutes_between_download", "Default Minutes")
 
-        val message1 = prefs.getString("url_download", "Howdy!")
-        val message2 = prefs.getString("minutes_between_download", "Howdy!")
-
-        if (message1 != null) {
-            Log.i("test1", message1)
-        }
-        if (message2 != null) {
-            Log.i("test1", message2)
-        }
-        barText.setText(message1 + " " + message2)
+        barText.setText("URl: $message1  Interval: $message2")
     }
+
 
 
 }

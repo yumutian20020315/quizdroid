@@ -250,7 +250,7 @@ class MockTopicRepository(private val context: Context): TopicRepository {
     )
 
     init {
-        loadTopicsFromJsonFile("questions.json")
+        loadTopicsFromJsonFile("my_questions.json")
     }
 
     private fun loadTopicsFromJsonFile(fileName: String) {
@@ -259,6 +259,7 @@ class MockTopicRepository(private val context: Context): TopicRepository {
             val jsonString = file.readText(Charsets.UTF_8)
             // Clear the hardcoded list
             items.clear()
+
             // Parse the JSON string and add to 'items'
             parseTopics(jsonString).let {
                 items.addAll(it)
@@ -275,9 +276,9 @@ class MockTopicRepository(private val context: Context): TopicRepository {
                 Topic(
                     title = jsonObject.getString("title"),
                     descriptionShort = jsonObject.getString("desc"),
-                    descriptionLong = jsonObject.getString("desc"), // 如果您有长描述，应该使用它
+                    descriptionLong = jsonObject.getString("desc"),
                     quizzes = parseQuizzes(jsonObject.getJSONArray("questions")),
-                    iconId = android.R.drawable.ic_dialog_email // 您需要为每个主题提供一个图标资源
+                    iconId = android.R.drawable.ic_dialog_email
                 )
             }
         }
@@ -288,7 +289,7 @@ class MockTopicRepository(private val context: Context): TopicRepository {
         for (i in 0 until jsonArray.length()) {
             val questionObject = jsonArray.getJSONObject(i)
             val questionText = questionObject.getString("text")
-            val answerIndex = questionObject.getString("answer").toInt() // 确保 answer 字段是字符串类型的数字
+            val answerIndex = questionObject.getString("answer").toInt()
             val answersJsonArray = questionObject.getJSONArray("answers")
             val answers = mutableListOf<String>()
             for (j in 0 until answersJsonArray.length()) {
