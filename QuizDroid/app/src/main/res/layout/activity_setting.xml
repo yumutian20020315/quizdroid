@@ -30,12 +30,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/black"/>
 
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Your error goes here"
+        app:layout_constraintTop_toBottomOf="@id/minutesInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#CF1138"/>
+    <Button
+        android:id="@+id/airmode_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to airplane mode"
+        app:layout_constraintTop_toBottomOf="@id/error"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:enabled="false"/>
+
     <Button
         android:id="@+id/confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm"
-        app:layout_constraintTop_toBottomOf="@id/minutesInput"
+        android:text="Download"
+        app:layout_constraintTop_toBottomOf="@id/airmode_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:enabled="true"/>

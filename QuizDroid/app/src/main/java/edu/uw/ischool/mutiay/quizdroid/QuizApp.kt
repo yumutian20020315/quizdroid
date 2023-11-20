@@ -29,6 +29,7 @@ interface TopicRepository {
     fun findTopicbyName(title: String): Topic?
     fun findQuizbyIndex(title: String, index: Int): Quiz?
     fun getAlltopics():MutableList<Topic>
+    fun refreshrepo(fileName: String)
 
     // my operations
     fun getTopicsnames(): List<String>
@@ -37,7 +38,6 @@ interface TopicRepository {
 
 
 }
-
 
 
 
@@ -129,10 +129,10 @@ class MockTopicRepository(private val context: Context): TopicRepository {
     )
 
     init {
-        loadTopicsFromJsonFile("my_questions.json")
+        refreshrepo("questions.json")
     }
 
-    private fun loadTopicsFromJsonFile(fileName: String) {
+     override fun refreshrepo(fileName: String) {
         val file = File(context.filesDir, fileName)
         if (file.exists()) {
             val jsonString = file.readText(Charsets.UTF_8)
@@ -143,7 +143,6 @@ class MockTopicRepository(private val context: Context): TopicRepository {
             parseTopics(jsonString).let {
                 items.addAll(it)
             }
-            Log.e("MockTopicRepository", "File OK")
         } else {
             Log.e("MockTopicRepository", "File does not exist: $fileName. Using hardcoded data.")
         }

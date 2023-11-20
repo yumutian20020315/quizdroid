@@ -33,19 +33,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        load()
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("OnResume()", "onResume called")
+        barText = findViewById(R.id.showme)
+
+        val prefs = this.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
+
+        val message1 = prefs.getString("url_download", "Default URL")
+        val message2 = prefs.getString("minutes_between_download", "Default Minutes")
+
+        barText.setText("URl: $message1  Interval: $message2")
+        load()
+    }
+
+    private fun load() {
         // get the repo in and access titles
         val repo = (application as QuizApp).accessRepo()
+        repo.refreshrepo("questions.json")
+
         val titles = repo.getTopicsnames()
 
         //get action bar
         setSupportActionBar(findViewById(R.id.my_toolbar))
-
-
-
-        val titlesWithDes = repo.getTitleswithDes()
-
-
 
 
 
@@ -61,9 +76,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // old list view
-//        val adapter = ArrayAdapter<String>(this,
-//            android.R.layout.simple_list_item_1, titlesWithDes)
 
         // new version of listview with icons
         val adapter = TopicArrayAdapter(this, R.layout.topic_list_item, repo.getAlltopics())
@@ -82,22 +94,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
     }
-
-    override fun onResume() {
-        super.onResume()
-        Log.i("OnResume()", "onResume called")
-        barText = findViewById(R.id.showme)
-
-        val prefs = this.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
-
-        val message1 = prefs.getString("url_download", "Default URL")
-        val message2 = prefs.getString("minutes_between_download", "Default Minutes")
-
-        barText.setText("URl: $message1  Interval: $message2")
-    }
-
 
 
 }
